@@ -1,8 +1,8 @@
 {
     // Code Runner 플러그인용 설정
     "code-runner.executorMap": {
-        // 기본값은 "javascript":"node"
-        "javascript": "cd $dir && C:/jsshell-win64/js.exe $fileName"
+        //"javascript": "node"
+        "javascript": "cd $dir && C:/jsshell-win64/js.exe -w -m $fileName"
     }
 
     /*

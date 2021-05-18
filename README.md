@@ -43,15 +43,23 @@
     * 실행파일만 jsshell로 설정을 바꾸면 되는데, 그때 IDE상에서 디버깅은 제대로 안됨
 
 ## 진행
-
-* IDE에서 알려주는 것도 많아서, Node에서 실행되는 코드로 변경하면서 진행하는게 좋을 것 같다.
-
-  
-
+* node, 스파이더몽키 쉘에서 모두 잘동작하는 코드로 변경작성
+* VS Code에서는 스파이더몽키 JS쉘를 사용하고, WebStrom에서는 node를 사용하자!
+* node 로 실행했을 때 경로 로그...
+    * ExperimentalWarning: The ESM module loader is experimental.
+        * Windows 8.1에서 node 신버전을 설치할 수는 없어서, node 12.x 를 사용중인데, 그래서 발생한 경고 같다. 신버전이면 안 뜰듯.
+    
 ## 의견
 
 * SpiderMonkey 에서만 사용하는 함수를 사용한 부분이 있어서, 근래의 개발 툴에 적용하기가 복잡한 면이 있어서,  
   개정판이 나온다면 특정 프로그램에 종속되는 전용 함수들은 표준함수로 바꾸는것이 좋을 것 같습니다.  (node로 바꾸는 것도..)
   * print() -> console.log()
     * 브라우저에서 print() 는 화면출력이 아닌 인쇄를 의미하고 있음.
+  * load() -> ES6의 import 문을 사용하면 외부 JS 로딩이 잘됨.
 
+
+## 참고 링크
+* import declarations may only appear at top level of a module
+    * https://bugzilla.mozilla.org/show_bug.cgi?id=1582995
+* SyntaxError: Cannot use import statement outside a module
+    * https://stackoverflow.com/questions/58384179/syntaxerror-cannot-use-import-statement-outside-a-module
