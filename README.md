@@ -71,8 +71,41 @@
 
 
 
-
-
+## Ubuntu
+* linux 버전을 Ubuntu에 다운로드 받아 압출을 풀었을 때... 아래 4개 파일이 있음.
+    * js
+    * libnspr4.so
+    * libplc4.so
+    * libplds4.so
+* js가 실행파일인데, 실행하면, 아래와 같은 오류가 발생한다.
+    ```
+    ./js: error while loading shared libraries: libnspr4.so: cannot open shared object file: No such file or directory
+    ```
+    * 실행파일과 같은 경로에 공유오브젝트가 이미 있는데도 오류가 남.
+    * 해결
+        1.  `/etc/ld.so.conf.d` 경로에 `spidermonkey.conf` 파일을 새로 만들고 내용은 공유 오브젝트 파일들이 있는 경로를 지정해줌.
+            ```
+            /설치경로
+            ```
+        2. `sudo ldconfig -v` 를 실행하면 결과가 아래와 같이 보임
+            ```
+            ...
+            /설치경로:
+                libnspr4.so -> libnspr4.so
+                libplds4.so -> libplds4.so
+                libplc4.so -> libplc4.so
+            ...
+            ```
+        3. 이후 부턴 정상 수행됨.
+    * 특이한 점
+        * Windows용 빌드는 `js>` 프롬프트에 한글만 입력해도 크래시가 발생하는데...  
+         linux용은 한글 입출력이 잘된다. (Ubuntu 로케일 : UTF-8)
+            ```
+            js> var 한글변수='한글내용';
+            js> console.log(한글변수);
+            한글내용
+            js>
+            ```
 
 ## 참고 링크
 * import declarations may only appear at top level of a module
