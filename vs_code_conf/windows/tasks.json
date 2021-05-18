@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "js run - (SpiderMonkey shell)",
+            "type": "shell",
+            "command": "C:\\jsshell-win64\\js.exe",
+            "args": [
+                "-w",
+                "${fileDirname}\\${fileBasename}"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

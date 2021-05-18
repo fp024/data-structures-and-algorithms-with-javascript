@@ -1,0 +1,37 @@
+{
+    // Code Runner 플러그인용 설정
+    "code-runner.executorMap": {
+        // 기본값은 "javascript":"node"
+        "javascript": "cd $dir && C:/jsshell-win64/js.exe $fileName"
+    }
+
+    /*
+    // 개별 설정
+    //   환경설정과, CHCP 65001 UTF-8 터미널 출력 설정 
+    ,"terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "env": {
+                "PATH": "C:\\jsshell-win64;${env:PATH}"
+            },
+            "args": [
+                "/k",
+                "chcp 65001"
+            ],
+            "icon": "terminal-cmd"
+        },
+        "PowerShell": {
+            "source": "PowerShell",
+            "env": {
+                "PATH": "C:\\jsshell-win64;${env:PATH}"
+            },
+            "args": ["-NoExit", "-Command", "chcp 65001"]
+        },
+        "Git Bash": null
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell"
+    */
+}
