@@ -43,7 +43,7 @@
     * 실행파일만 jsshell로 설정을 바꾸면 되는데, 그때 IDE상에서 디버깅은 제대로 안됨
 
 ## 진행
-* node, 스파이더몽키 쉘에서 모두 잘동작하는 코드로 변경작성
+* node, 스파이더몽키 쉘에서 모두 잘동작하는 코드로 변경작성하면 좋은데, 힘들 부분도 있을 것 같음.
 * VS Code에서는 스파이더몽키 JS쉘를 사용하고, WebStrom에서는 node를 사용하자!
 * node 로 실행했을 때 경로 로그...
     * ExperimentalWarning: The ESM module loader is experimental.
@@ -53,9 +53,25 @@
 
 * SpiderMonkey 에서만 사용하는 함수를 사용한 부분이 있어서, 근래의 개발 툴에 적용하기가 복잡한 면이 있어서,  
   개정판이 나온다면 특정 프로그램에 종속되는 전용 함수들은 표준함수로 바꾸는것이 좋을 것 같습니다.  (node로 바꾸는 것도..)
-  * print() -> console.log()
+  
+  
+## SpiderMonkey -> 일반 함수   
+
+* print() -> console.log()
     * 브라우저에서 print() 는 화면출력이 아닌 인쇄를 의미하고 있음.
-  * load() -> ES6의 import 문을 사용하면 외부 JS 로딩이 잘됨.
+* load() -> import
+    * ES6의 import 문을 사용하면 외부 JS 로딩이 잘됨.
+* putstr() -> ?
+    * Evaluate and print expression without newline.
+    * 개행이 없는 print()
+* readline() -> ?
+    * Read a single line from stdin.
+    * 한줄을 입력받음
+    * Code Runner 의 Output에서는 입력을 할 수 없음. task에서는 입력은 할 수 있음.
+
+
+
+
 
 
 ## 참고 링크
