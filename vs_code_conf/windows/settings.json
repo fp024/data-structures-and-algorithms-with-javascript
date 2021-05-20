@@ -3,7 +3,9 @@
     "code-runner.executorMap": {
         //"javascript": "node"
         "javascript": "cd $dir && C:/jsshell-win64/js.exe -w -m $fileName"
-    }
+    },
+    "code-runner.runInTerminal": false,
+    "code-runner.clearPreviousOutput": true
 
     /*
     // 개별 설정

@@ -17,6 +17,11 @@
                 * http://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/jsshell-win64.zip
             * linux
                 * http://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/jsshell-linux-x86_64.zip
+    * Firefox 88.0.1 정식버전 기준이라면..
+      * http://archive.mozilla.org/pub/firefox/releases/88.0.1/jsshell/
+      * 그런데 파일 최종 수정시간이 nightly, 88.0.1모두 2010-01-01 12:00 으로 모두 같아서 업데이트가 없었는지? 란 생각도 들었는데...   
+      js --version으로 보면 JavaScript-C88.0.1 버전 값은 다름.
+
 
 ### Visual Studio Code
 * settings.json 설정
@@ -107,6 +112,8 @@
             한글내용
             js>
             ```
+
+    
 
 ## 참고 링크
 * import declarations may only appear at top level of a module
