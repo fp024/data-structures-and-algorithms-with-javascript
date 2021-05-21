@@ -5,7 +5,9 @@
         "javascript": "cd $dir && C:/jsshell-win64/js.exe -w -m $fileName"
     },
     "code-runner.runInTerminal": false,
-    "code-runner.clearPreviousOutput": true
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.showExecutionMessage": true
 
     /*
     // 개별 설정
