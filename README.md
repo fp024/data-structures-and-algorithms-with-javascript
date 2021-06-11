@@ -46,6 +46,8 @@
 ### WebStorm
 * Empty Project로 프로젝트 생성후 JavaScript로 실행하면 node로 실행됨
     * 실행파일만 jsshell로 설정을 바꾸면 되는데, 그때 IDE상에서 디버깅은 제대로 안됨
+* Terminal 환경변수로 PATH 항목에 Spider Monkey의 경로를 넣어서 설정가능함.
+
 
 ## 진행
 * node, 스파이더몽키 쉘에서 모두 잘동작하는 코드로 변경작성하면 좋은데, 힘들 부분도 있을 것 같음.
@@ -74,7 +76,10 @@
     * Read a single line from stdin.
     * 한줄을 입력받음
     * Code Runner 의 Output에서는 입력을 할 수 없음. task에서는 입력은 할 수 있음.
-
+    
+* read() -> fs 모듈의 readFileSync()
+    * 파일을 읽음
+    
 
 
 ## Ubuntu
@@ -120,3 +125,5 @@
     * https://bugzilla.mozilla.org/show_bug.cgi?id=1582995
 * SyntaxError: Cannot use import statement outside a module
     * https://stackoverflow.com/questions/58384179/syntaxerror-cannot-use-import-statement-outside-a-module
+* How to fix the error `require is not defined` in Node.js
+    * https://learn.coderslang.com/0021-nodejs-require-is-not-defined-error/
