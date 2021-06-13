@@ -4,10 +4,12 @@ export function List() {
     this.dataStore = []; // 리스트 요소를 저장할 빈 배열 초기화
     this.clear = clear;
     this.find = find;
+    this.findIf = findIf;
     this.toString = toString;
     this.insert = insert;
     this.append = append;
     this.remove = remove;
+    this.removeIf = removeIf;
     this.front = front;
     this.end = end;
     this.prev = prev;
@@ -18,6 +20,12 @@ export function List() {
     this.moveTo = moveTo;
     this.getElement = getElement;
     this.contains = contains;
+    this.containsIf = containsIf;
+    this.displayList = displayList;
+
+    // 연습문제로 추가한 함수
+    this.appendIf = appendIf;
+    this.displayListIf = displayListIf;
 }
 
 // (참고) WebStorm 에서 같은 프로젝트에 어떤 js 파일에 같은 이름으로 함수 같은 것이 선언되어있으면
@@ -32,6 +40,28 @@ function append(element) {
 }
 
 /**
+ * 리스트에 요소 추가
+ * @param element 추가할 요소
+ * @param func  리스트 추가시 조건 정의 함수
+ */
+function appendIf(element, func) {
+    let appendable = true;
+    for (let e of this.dataStore) {
+        if (func(element, e)) {
+            appendable = false;
+        }
+    }
+    if (appendable) {
+        this.dataStore[this.listSize++] = element;
+    }
+}
+
+
+
+
+
+
+/**
  * 리스트의 요소 검색
  * @param element   검색할 요소
  * @returns {number} 검색 요소의 인덱스 번호
@@ -39,6 +69,20 @@ function append(element) {
 function find(element) {
     for (let i = 0; i < this.dataStore.length; i++) {
         if (this.dataStore[i] == element) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * 리스트의 요소 검색
+ * @param element   검색할 요소
+ * @returns {number} 검색 요소의 인덱스 번호
+ */
+function findIf(element, func) {
+    for (let i = 0; i < this.dataStore.length; i++) {
+        if (func(this.dataStore[i], element)) {
             return i;
         }
     }
@@ -59,6 +103,22 @@ function remove(element) {
     }
     return false;
 }
+
+/**
+ * 리스트의 요소 삭제
+ * @param element 삭제할 요소
+ * @returns {boolean} 삭제 성공시 true, 실패시 false
+ */
+function removeIf(element, func) {
+    let foundAt = this.findIf(element, func);
+    if (foundAt > -1) {
+        this.dataStore.splice(foundAt, 1);
+        --this.listSize;
+        return true;
+    }
+    return false;
+}
+
 
 /**
  * 리스트의 요소 개수
@@ -111,6 +171,17 @@ function clear() {
 function contains(element) {
     return (this.find(element) > -1);
 }
+
+/**
+ * 리스트에 특정 값이 있는지 판단. 
+ * @param element       존재 여부를 검사할 요소
+ * @param func          비교 조건 전달
+ * @returns {boolean}   존재 여부
+ */
+function containsIf(element, func) {
+    return (this.findIf(element, func) > -1);
+}
+
 
 function front() {
     this.pos = 0;
@@ -165,4 +236,29 @@ function moveTo(position) {
  */
 function getElement() {
     return this.dataStore[this.pos];
+}
+
+
+/**
+ * 리스트의 내용 콘솔 출력
+ */
+function displayList() {
+    for (this.front(); this.currPos() < this.length(); this.next()) {
+        console.log(this.getElement().toString());
+        if (!this.hasNext()) {
+            break;
+        }
+    }
+}
+
+
+function displayListIf(func) {
+    for (this.front(); this.currPos() < this.length(); this.next()) {
+        if(func(this.getElement())) {
+            console.log(this.getElement().toString());
+        }
+        if (!this.hasNext()) {
+            break;
+        }
+    }
 }
